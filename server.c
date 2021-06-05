@@ -60,15 +60,19 @@ int main(int argc, char const *argv[])
     initGame(fp);
     int flag = 1;
     size_t size = 0;
-    while (flag)
+    int completed = 1;
+    int qChall = 4;
+    while (completed <= qChall)
     {
-        flag = challenge(1);
+        if(challenge(completed) > 0){
+            completed++;
+        }
         // if (getline(&buffer, &size, fp) > 0)
         //     printf("%s", buffer);
     }
     // if (getline(&buffer, &size, fp) > 0)
     //     printf("%s", buffer);
-    printf("Felicitaciones, finalizaron el juego. Ahora deberán implementar el servidor que se comporte como el servidor provisto\n\n");
+    printf("\nFelicitaciones, finalizaron el juego. Ahora deberán implementar el servidor que se comporte como el servidor provisto\n\n");
     
     // Liberamos los recursos utilizados.
     free(buffer);

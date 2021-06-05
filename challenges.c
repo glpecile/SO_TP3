@@ -28,17 +28,18 @@ static void toInvestigateMsg();
 static int challenge1();
 static int challenge2();
 static int challenge3();
+static int challenge4();
 
 void initGame(FILE *fp)
 {
     game.fp = fp;
     // Inicializamos los niveles del juego.
-    t_challenge aux[MAX_CHALLENGES] = {{&challenge1, "entendido\n"}, {&challenge2, "itba\n"}, {&challenge3, "M4GFKZ289aku\n"}};
+    t_challenge aux[MAX_CHALLENGES] = {{&challenge1, "entendido\n"}, {&challenge2, "itba\n"}, {&challenge3, "M4GFKZ289aku\n"}, {&challenge4, "fk3wfLCm3QvS\n"}};
     // {{&challenge1, "entendido\n"}, {&challenge2, "itba\n"}, {&challenge3, "M4GFKZ289aku\n"}, {&challenge4, "fk3wfLCm3QvS\n"}, {&challenge5, "too_easy\n"}, {&challenge6, ".RUN_ME\n"}, {&challenge7, "K5n2UFfpFMUN\n"}, {&challenge8, "BUmyYq5XxXGt\n"}, {&challenge9, "u^v\n"}, {&challenge10, "chin_chu_lan_cha\n"}, {&challenge11, "gdb_rules\n"}, {&challenge12, "normal\n"}}
     game.challenges = (t_challenge *)&aux;
     game.buffer = NULL;
     game.size = 0;
-    printf("Se inicializo el juego\n");
+    // printf("Se inicializo el juego\n");
 }
 
 int challenge(int challengeId)
@@ -69,32 +70,78 @@ static int challenge1()
     return processAnswer(game.challenges[0].answer, game.buffer);
 }
 
-// static int challenge2()
+static int challenge2()
+{
+    printf(
+        "The Wire S1E5\n"
+        "5295 888 6288\n\n");
+    toInvestigateMsg();
+    printf("¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?\n");
+
+    if (getline(&game.buffer, &game.size, game.fp) == -1)
+    {
+        HANDLE_ERROR("Challenge2: Error in getline");
+    }
+    return processAnswer(game.challenges[1].answer, game.buffer);
+}
+
+static int challenge3()
+{
+    printf("https://ibb.co/tc0Hb6w\n");
+    toInvestigateMsg();
+    printf("¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?\n");
+
+    if (getline(&game.buffer, &game.size, game.fp) == -1)
+    {
+        HANDLE_ERROR("Challenge3: Error in getline");
+    }
+    return processAnswer(game.challenges[2].answer, game.buffer);
+}
+
+static int challenge4()
+{
+    char *res = "La respuesta es fk3wfLCm3QvS";
+    if (write(13, res, strlen(res)) == -1)
+    {
+        perror("write");
+    }
+    printf("EBADF...\n\nwrite: Bad file descriptor\n");
+    toInvestigateMsg();
+    printf(
+        "¿Qué útil abstraccion es utilizada para comunicarse con sockets?" 
+        " ¿se puede utilizar read(2) y write(2) para operar?\n");
+
+    if (getline(&game.buffer, &game.size, game.fp) == -1)
+    {
+        HANDLE_ERROR("Challenge4: Error in getline");
+    }
+    return processAnswer(game.challenges[3].answer, game.buffer);
+}
+
+// static int challenge5()
 // {
-//     printf(
-//         "The Wire S1E5\n"
-//         "5295 888 6288\n\n");
+//     printf("\n");
 //     toInvestigateMsg();
-//     printf("¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?\n");
+//     printf("\n");
 
 //     if (getline(&game.buffer, &game.size, game.fp) == -1)
 //     {
-//         HANDLE_ERROR("Challenge2: Error in getline");
+//         HANDLE_ERROR("Challenge5: Error in getline");
 //     }
-//     return processAnswer(game.challenges[1].answer, game.buffer);
+//     return processAnswer(game.challenges[4].answer, game.buffer);
 // }
 
-// static int challenge3()
+// static int challenge6()
 // {
-//     printf("https://ibb.co/tc0Hb6w\n");
+//     printf("\n");
 //     toInvestigateMsg();
-//     printf("¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?\n");
+//     printf("\n");
 
-//     if (getline(&game.buffer, &game.size, game.fp) == -1) 
+//     if (getline(&game.buffer, &game.size, game.fp) == -1)
 //     {
-//         HANDLE_ERROR("Challenge3: Error in getline");
+//         HANDLE_ERROR("Challenge6: Error in getline");
 //     }
-//     return processAnswer(game.challenges[2].answer, game.buffer);
+//     return processAnswer(game.challenges[5].answer, game.buffer);
 // }
 
 static void challengeMsg()
