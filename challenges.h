@@ -1,12 +1,12 @@
 #ifndef __CHALLENGES_H__
 #define __CHALLENGES_H__
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#define _POSIX_C_SOURCE 200809L
 #define MAX_CHALLENGES 12
 #define HANDLE_ERROR(msg)   \
     do                      \
