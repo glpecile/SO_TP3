@@ -22,6 +22,7 @@ En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafí
 Además tendrán que investigar otras preguntas para responder durante la defensa.
 El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
 Además, deberán implementar otro programa para comunicarse conmigo.
+no me ves?
 
 Deberán estar atentos a los easter eggs.
 
