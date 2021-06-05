@@ -1,3 +1,5 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 /**
     Fuente: https://www.geeksforgeeks.org/socket-programming-cc/
 */
@@ -11,10 +13,6 @@ int main(int argc, char const *argv[])
     struct sockaddr_in address;
     int opt = 1;
     int addrlen = sizeof(address);
-    //char buffer[MAX_BUFFER] = {0};
-    // memset(buffer, 0, MAX_BUFFER);
-    //char *buffer = calloc(MAX_BUFFER, sizeof(char) * MAX_BUFFER);
-    char *buffer = NULL;
 
     // Se crea el fd del socket.
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -58,24 +56,17 @@ int main(int argc, char const *argv[])
         HANDLE_ERROR("Error in fdopen.");
     }
     initGame(fp);
-    int flag = 1;
-    size_t size = 0;
     int completed = 1;
-    int qChall = 4;
+    int qChall = MAX_CHALLENGES;
     while (completed <= qChall)
     {
         if(challenge(completed) > 0){
             completed++;
         }
-        // if (getline(&buffer, &size, fp) > 0)
-        //     printf("%s", buffer);
+        sleep(2);
     }
-    // if (getline(&buffer, &size, fp) > 0)
-    //     printf("%s", buffer);
-    printf("\nFelicitaciones, finalizaron el juego. Ahora deberán implementar el servidor que se comporte como el servidor provisto\n\n");
-    
     // Liberamos los recursos utilizados.
-    free(buffer);
+    endGame();
     close(server_fd);
     return EXIT_SUCCESS;
 }
