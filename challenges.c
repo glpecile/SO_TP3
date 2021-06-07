@@ -150,7 +150,7 @@ static int challenge5()
 {
     if (too_easy)
     {
-        printf("respuesta = strings:172\n");
+        printf("respuesta = strings:250\n");
         toInvestigateMsg();
         printf("¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
 
@@ -288,9 +288,10 @@ static int challenge12()
 {
     printf("Me conoces\n");
 
-    double x, y, aux;
+    
     for (int i = 0; i < 1000; i++)
     {
+        double x, y, aux;
         x = rand() / ((double)RAND_MAX + 1);
         y = rand() / ((double)RAND_MAX + 1);
         aux = sqrt(-2 * log(x)) * cos(2 * PIE * y);

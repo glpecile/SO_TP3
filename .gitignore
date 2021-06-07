@@ -3,3 +3,7 @@
 .DS_Store
 server
 client
+output.cppOut 
+report.tasks 
+results.valgrind
+.bash_history
